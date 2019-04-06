@@ -6,9 +6,13 @@ import java.util.List;
 
 import javax.swing.JOptionPane;
 
-public class MenuJOpitionPane {
+public class MenuJOptionPane {
 
-	private final static List<Usuario> usuarios = new ArrayList<>();
+	private final static List<Usuario> usuarios = new ArrayList();
+	private static final String Usuario = null;
+	private static final String Normal = null;
+	private static final String Admin = null;
+
 	private static int idUsuario = 1;
 
 	public static void main(String[] args) {
@@ -25,10 +29,21 @@ public class MenuJOpitionPane {
 	}
 
 	private static void excluirUsuario() {
-		int id = Integer.parseInt(JOptionPane.showInputDialog(null, "Digite o Id do Usuario "));
 		for (Iterator iterator = usuarios.iterator(); iterator.hasNext();) {
 			Usuario usuario = (Usuario) iterator.next();
-			if(id == usuario.getId()) {
+			JOptionPane.showConfirmDialog(null, "Normal","Admin", idUsuario, idUsuario);
+			try {
+				if (Usuario == "Admin") {
+					JOptionPane.showInputDialog(null,"Digite sua senha ");
+					JOptionPane.showInputDialog(null, "Digite o Id do Usuario ");
+				}
+			} catch (Exception e) {
+				if (Usuario == "Normal") {
+					JOptionPane.showMessageDialog(null, "Somente Usuï¿½rio Admin pode excluir");
+				}
+			}
+			int id = 0;
+			if(id  == usuario.getId()) {
 				iterator.remove();
 				JOptionPane.showMessageDialog(null, "Usuario removido com sucesso");
 				menuPrincipal();
@@ -50,6 +65,7 @@ public class MenuJOpitionPane {
 		usuarioNovo.setEmail(emailSalvo);
 		usuarioNovo.setSenha(senhaSalva);
 		usuarioNovo.setNivel(NivelEnum.valueOf(nivelSalvo));
+		JOptionPane.showMessageDialog(null, "Usuï¿½rio Cadastrado com Sucesso");
 		usuarios.add(usuarioNovo);
 		JOptionPane.showMessageDialog(null, usuarioNovo.toString());
 		menuPrincipal();
@@ -58,9 +74,9 @@ public class MenuJOpitionPane {
 	private static void menuPrincipal() {
 		try {
 			int escolha = Integer.parseInt(
-					JOptionPane.showInputDialog("Digite uma opção:\n1) Cadastrar\n2) Excluir\n3) Listar Todos\n4)Sair"));
+					JOptionPane.showInputDialog("Digite uma opï¿½ï¿½o:\n1) Cadastrar\n2) Excluir\n3) Listar Todos\n4)Sair"));
 			if (escolha < 1 || escolha > 4) {
-				JOptionPane.showMessageDialog(null, "Opçao inválida");
+				JOptionPane.showMessageDialog(null, "Opï¿½ao invï¿½lida");
 				menuPrincipal();
 			}
 			switch (escolha) {
@@ -77,7 +93,7 @@ public class MenuJOpitionPane {
 				System.exit(0);
 			}
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Opçao inválida");
+			JOptionPane.showMessageDialog(null, "Opï¿½ao invï¿½lida");
 			menuPrincipal();
 		}
 	}

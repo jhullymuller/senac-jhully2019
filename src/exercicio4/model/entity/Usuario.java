@@ -1,35 +1,36 @@
-package exercicio3.model.entity;
-
-import java.util.Locale;
-
-import exercicio4.model.entity.Nivel;
+package exercicio4.model.entity;
 
 public class Usuario {
 	private int id;
 	private String nome;
 	private String email;
 	private String senha;
-	private NivelEnum nivel;
+	private String confirmacaoSenha;
+	private Nivel nivel;
 	public Usuario() {
+		super();
 	}
-
-	public Usuario(int id, String nome, String email, String senha, NivelEnum nivel) {
+	public Usuario(int id, String nome, String email, String senha,String confirmacaoSenha, Nivel nivel) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
 		this.nivel = nivel;
+		this.confirmacaoSenha = confirmacaoSenha;
 	}
-
+	public String getConfirmacaoSenha() {
+		return confirmacaoSenha;
+	}
+	public void setConfirmacaoSenha(String confirmacaoSenha) {
+		this.confirmacaoSenha = confirmacaoSenha;
+	}
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getNome() {
 		return nome;
 	}
@@ -45,22 +46,21 @@ public class Usuario {
 	public String getSenha() {
 		return senha;
 	}
+	
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
-	public NivelEnum getNivel() {
+	public Nivel getNivel() {
 		return nivel;
 	}
-	public void setNivel(NivelEnum nivel) {
+	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
-
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", nivel=" + nivel
-				+ "]";
+		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", confirmacaoSenha="
+				+ confirmacaoSenha + ", nivel=" + nivel + "]";
 	}
-
 	
 	}
+	
