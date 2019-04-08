@@ -15,6 +15,8 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 public class TelaPrincipal extends  JFrame {
 
@@ -102,6 +104,11 @@ public class TelaPrincipal extends  JFrame {
 		desktopPane.setBounds(10, 33, 650, 419);
 		contentPane.add(desktopPane);
 		desktopPane.setLayout(null);
+		
+		JLabel lblimagem = new JLabel("");
+		lblimagem.setIcon(new ImageIcon("/home/jhully/\u00C1rea de Trabalho/icones/iconeCadastro.png"));
+		lblimagem.setBounds(146, 53, 460, 310);
+		desktopPane.add(lblimagem);
 	}
 	
 
