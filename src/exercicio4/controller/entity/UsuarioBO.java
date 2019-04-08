@@ -45,9 +45,9 @@ public class UsuarioBO {
 		
 		return mensagem;
 	}
-	public ArrayList<Usuario> consultarTodos() {
+	public ArrayList<Usuario> consultarTodos(String nome,Integer nivel) {
 		UsuarioDao dao = new UsuarioDao();
-		return dao.consultarTodos();
+		return dao.consultarTodos(nome,nivel);
 	}
 	
 	public boolean remover(Integer id) {

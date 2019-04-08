@@ -42,9 +42,9 @@ public class UsuarioController {
 		}
 		return mensagem;
 	}
-	public ArrayList<Usuario> consultarTodos() {
+	public ArrayList<Usuario> consultarTodos(String nome,Integer nivel) {
 		UsuarioBO bo = new UsuarioBO();
-		return bo.consultarTodos();
+		return bo.consultarTodos(nome,nivel);
 	}
 	
 	public boolean remover(Integer id) {

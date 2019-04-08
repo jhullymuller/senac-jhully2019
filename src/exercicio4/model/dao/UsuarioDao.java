@@ -48,12 +48,16 @@ public class UsuarioDao {
 		return false;
 	}
 	
-	public ArrayList<Usuario> consultarTodos() {
+	public ArrayList<Usuario> consultarTodos(String nome,Integer nivel) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		ArrayList<Usuario> usuarios = new ArrayList<Usuario>();
-		String query = "SELECT usuario.id, usuario.nome, usuario.email, nivel.id, nivel.descricao FROM usuario LEFT JOIN nivel on usuario.nivel = nivel.id";
+		
+		String query = "SELECT usuario.id, usuario.nome, usuario.email, nivel.id, nivel.descricao FROM usuario LEFT JOIN nivel on usuario.nivel = nivel.id where UPPER(nome) LIKE UPPER('%"+ nome+"%')";
+		if(nivel!=null) {
+			query += " and nivel.id = "+ nivel;
+		}
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
@@ -66,6 +70,7 @@ public class UsuarioDao {
 			}
 		} catch (SQLException e) {
 			System.out.println("Erro ao executar a Query de Consulta de Usuários.");
+			e.printStackTrace();
 		} finally {
 			Banco.closeResultSet(resultado);
 			Banco.closeStatement(stmt);

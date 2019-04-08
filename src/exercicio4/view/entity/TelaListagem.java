@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 import exercicio4.controller.entity.UsuarioController;
+import exercicio4.model.entity.Nivel;
 import exercicio4.model.entity.Usuario;
 
 public class TelaListagem extends JInternalFrame {
@@ -67,26 +68,27 @@ public class TelaListagem extends JInternalFrame {
 		txtBuscar.setBounds(79, 41, 180, 19);
 		getContentPane().add(txtBuscar);
 		txtBuscar.setColumns(10);
+		final JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new Nivel[] { new Nivel(1, "Admin"), new Nivel(2, "Normal") }));
+		comboBox.setToolTipText("");
+		comboBox.setBounds(79, 72, 180, 24);
+		getContentPane().add(comboBox);
 		
 		JButton btnBuscar = new JButton("Buscar");
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioController control = new UsuarioController();
-				ArrayList<Usuario> usuarios = control.consultarTodos();
-				
-				//Atualizar a tabela;
-				atualizarTabela(usuarios);
-
+				Nivel nivel = (Nivel) comboBox.getSelectedItem();
+				Integer idNivel = null;
+				if (nivel != null) {
+					idNivel = nivel.getId();
+				}
+				atualizarTabela(control.consultarTodos(txtBuscar.getText(), idNivel));
 			}
 		});
 		btnBuscar.setBounds(285, 38, 117, 25);
 		getContentPane().add(btnBuscar);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Admin", "Normal"}));
-		comboBox.setToolTipText("");
-		comboBox.setBounds(79, 72, 180, 24);
-		getContentPane().add(comboBox);
 		
 		JLabel lblNivel = new JLabel("Nivel :");
 		lblNivel.setBounds(22, 77, 49, 15);
@@ -97,11 +99,17 @@ public class TelaListagem extends JInternalFrame {
 		btnExcluir.setBounds(285, 75, 117, 25);
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				int linha = table.getSelectedRow();
 				Integer id = Integer.parseInt((String) table.getModel().getValueAt(linha, 0));
 				UsuarioController controller = new UsuarioController();
 				controller.remover(id);
-				atualizarTabela(controller.consultarTodos());
+				Nivel nivel = (Nivel) comboBox.getSelectedItem();
+				Integer idNivel = null;
+				if (nivel != null) {
+					idNivel = nivel.getId();
+				}
+				atualizarTabela(controller.consultarTodos(txtBuscar.getText(), idNivel));
 			}
 		});
 		getContentPane().add(btnExcluir);
