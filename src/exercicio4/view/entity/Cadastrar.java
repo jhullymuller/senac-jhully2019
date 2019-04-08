@@ -2,6 +2,7 @@ package exercicio4.view.entity;
 
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -10,11 +11,13 @@ import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 import exercicio4.controller.entity.UsuarioController;
 import exercicio4.model.entity.Nivel;
@@ -24,7 +27,7 @@ public class Cadastrar extends JInternalFrame {
 	private JTextField txtEmail;
 	private JPasswordField passwordField;
 	private JButton btnCancelar;
-	private JTextField txtConfirmacaoSenha;
+	private JPasswordField txtConfirmacaoSenha;
 	private JComboBox comboBoxNivel;
 	private List<Nivel> niveis;
 
@@ -88,7 +91,7 @@ public class Cadastrar extends JInternalFrame {
 			public void actionPerformed(ActionEvent e) {
 				UsuarioController controller = new UsuarioController();
 				String mensagem = controller.cadastrar(txtNome.getText(), txtEmail.getText(),
-						passwordField.getPassword().toString(), (Nivel) comboBoxNivel.getSelectedItem());
+						String.valueOf(passwordField.getPassword()), (Nivel) comboBoxNivel.getSelectedItem(),String.valueOf(txtConfirmacaoSenha.getPassword()));
 
 				JOptionPane.showMessageDialog(null, mensagem);
 			}
@@ -104,7 +107,7 @@ public class Cadastrar extends JInternalFrame {
 			}
 
 			private void close() {
-
+				Cadastrar.this.setVisible(false);
 			}
 		});
 		btnCancelar.setForeground(Color.RED);
@@ -115,7 +118,7 @@ public class Cadastrar extends JInternalFrame {
 		lblConfirmaoDeSenha.setBounds(12, 111, 177, 15);
 		getContentPane().add(lblConfirmaoDeSenha);
 
-		txtConfirmacaoSenha = new JTextField();
+		txtConfirmacaoSenha = new JPasswordField();
 		txtConfirmacaoSenha.setBounds(191, 109, 117, 19);
 		getContentPane().add(txtConfirmacaoSenha);
 		txtConfirmacaoSenha.setColumns(10);

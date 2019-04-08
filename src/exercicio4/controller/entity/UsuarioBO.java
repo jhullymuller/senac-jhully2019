@@ -14,6 +14,7 @@ public class UsuarioBO {
 		if (mensagem.isEmpty()) {
 			UsuarioDao dao = new UsuarioDao();
 			dao.cadastrar(novo);
+			mensagem = "Cadastrado com Sucesso";
 		}
 		return mensagem;
 

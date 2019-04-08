@@ -9,7 +9,7 @@ import exercicio4.model.entity.Usuario;
 public class UsuarioController {
 
 	// Verificar se os campos são nulos ou vazios senao chamar BO
-	public String cadastrar(String nome, String email, String senha, Nivel nivel) {
+	public String cadastrar(String nome, String email, String senha, Nivel nivel,String confirmacaoSenha) {
 		String mensagem = "";
 		if (nome == null || nome.trim().isEmpty()) {
 			mensagem += "Erro por favor digite um nome, e sem espaço \n";
@@ -23,7 +23,9 @@ public class UsuarioController {
 		if (nivel == null ){
 			mensagem += "Erro por favor digite um nivel, e sem espaço \n";
 		}
-
+		if (!senha.equals(confirmacaoSenha)) {
+			mensagem += "Senhas não compativéis";
+		}
 		// validar o preenchimento dos campos - nao nulos e nao vazios
 		if (mensagem.isEmpty()) {
 			Usuario usuario = new Usuario();
