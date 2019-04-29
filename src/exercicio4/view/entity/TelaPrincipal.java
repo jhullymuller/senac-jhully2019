@@ -53,11 +53,11 @@ public class TelaPrincipal extends  JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 448, 21);
 		contentPane.add(menuBar);
-		
+
 		JMenuItem mntmCadastrar = new JMenuItem("Cadastrar");
 		mntmCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -72,8 +72,8 @@ public class TelaPrincipal extends  JFrame {
 			}
 		});
 		menuBar.add(mntmCadastrar);
-		
-		
+
+
 		JMenuItem mntmListar = new JMenuItem("Listar");
 		mntmListar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -87,7 +87,7 @@ public class TelaPrincipal extends  JFrame {
 			}
 		});
 		menuBar.add(mntmListar);
-		
+
 		JMenuItem mntmExcluir = new JMenuItem("Excluir");
 		mntmExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -96,7 +96,7 @@ public class TelaPrincipal extends  JFrame {
 		menuBar.add(mntmExcluir);
 		mntmCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		desktopPane = new JDesktopPane();
@@ -104,13 +104,13 @@ public class TelaPrincipal extends  JFrame {
 		desktopPane.setBounds(10, 33, 650, 419);
 		contentPane.add(desktopPane);
 		desktopPane.setLayout(null);
-		
+
 		JLabel lblimagem = new JLabel("");
 		lblimagem.setIcon(new ImageIcon("/home/jhully/\u00C1rea de Trabalho/icones/iconeCadastro.png"));
 		lblimagem.setBounds(146, 53, 460, 310);
 		desktopPane.add(lblimagem);
 	}
-	
+
 
 	private static void addPopup(Component component, final JPopupMenu popup) {
 		component.addMouseListener(new MouseAdapter() {

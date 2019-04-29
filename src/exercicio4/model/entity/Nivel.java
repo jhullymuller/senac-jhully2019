@@ -24,5 +24,5 @@ public class Nivel {
 	public String toString() {
 		return "Nivel [id=" + id + ", descricao=" + descricao + "]";
 	}
-	
+
 }

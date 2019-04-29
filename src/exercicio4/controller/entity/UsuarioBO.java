@@ -42,14 +42,14 @@ public class UsuarioBO {
 		if (numArrobas != 1) {
 			mensagem += "Email inválido \n";
 		} 
-		
+
 		return mensagem;
 	}
 	public ArrayList<Usuario> consultarTodos(String nome,Integer nivel) {
 		UsuarioDao dao = new UsuarioDao();
 		return dao.consultarTodos(nome,nivel);
 	}
-	
+
 	public boolean remover(Integer id) {
 		UsuarioDao dao = new UsuarioDao();
 		return dao.remover(id);

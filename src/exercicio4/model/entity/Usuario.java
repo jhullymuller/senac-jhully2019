@@ -46,7 +46,7 @@ public class Usuario {
 	public String getSenha() {
 		return senha;
 	}
-	
+
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
@@ -61,6 +61,6 @@ public class Usuario {
 		return "Usuario [id=" + id + ", nome=" + nome + ", email=" + email + ", senha=" + senha + ", confirmacaoSenha="
 				+ confirmacaoSenha + ", nivel=" + nivel + "]";
 	}
-	
-	}
-	
+
+}
+

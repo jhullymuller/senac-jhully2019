@@ -42,29 +42,29 @@ public class Excluir extends JInternalFrame {
 		setClosable(true);
 		setBounds(100, 100, 324, 195);
 		getContentPane().setLayout(null);
-		
+
 		JLabel lblEmail = new JLabel("Email :");
 		lblEmail.setBounds(45, 23, 70, 15);
 		getContentPane().add(lblEmail);
-		
+
 		textField = new JTextField();
 		textField.setBounds(133, 21, 114, 19);
 		getContentPane().add(textField);
 		textField.setColumns(10);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(133, 58, 114, 19);
 		getContentPane().add(passwordField);
-		
+
 		JLabel lblSenha = new JLabel("Senha :");
 		lblSenha.setBounds(45, 50, 56, 15);
 		getContentPane().add(lblSenha);
-		
+
 		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent e) {
-				
+
 			}
 		});
 		btnNewButton.setBounds(133, 99, 127, 25);

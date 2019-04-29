@@ -46,7 +46,7 @@ public class UsuarioController {
 		UsuarioBO bo = new UsuarioBO();
 		return bo.consultarTodos(nome,nivel);
 	}
-	
+
 	public boolean remover(Integer id) {
 		UsuarioBO bo = new UsuarioBO();
 		return bo.remover(id);
